@@ -39,6 +39,9 @@ coverage/
 # Test artifacts
 test-results/
 
+# Supabase CLI temp files
+supabase/.temp/
+
 # Misc
 *.tsbuildinfo
 .vercel
