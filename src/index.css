@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@layer base {
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    @apply bg-slate-950 text-slate-100 min-h-screen;
+  }
+}
+
+@layer components {
+  .nidus-card {
+    @apply bg-slate-900 border border-slate-800 rounded-xl shadow-lg;
+  }
+  .nidus-input {
+    @apply w-full px-3 py-2 bg-slate-800 border border-slate-700 rounded-lg text-slate-100
+           placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-violet-500
+           focus:border-transparent transition-all duration-200 text-sm;
+  }
+  .nidus-label {
+    @apply block text-sm font-medium text-slate-300 mb-1.5;
+  }
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-violet-600 hover:bg-violet-700
+           text-white font-semibold rounded-lg transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-violet-500 focus:ring-offset-2
+           focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed text-sm;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-slate-800 hover:bg-slate-700
+           text-slate-200 font-semibold rounded-lg border border-slate-700 transition-all duration-200 
+           focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2
+           focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed text-sm;
+  }
+  .btn-danger {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-red-600 hover:bg-red-700
+           text-white font-semibold rounded-lg transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2
+           focus:ring-offset-slate-950 disabled:opacity-50 disabled:cursor-not-allowed text-sm;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
