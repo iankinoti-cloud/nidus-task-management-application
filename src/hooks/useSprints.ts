@@ -54,9 +54,10 @@ export function useCreateSprint() {
 
   return useMutation({
     mutationFn: async (payload: CreateSprintPayload) => {
+      if (!user) throw new Error('You must be signed in to create a sprint.')
       const { data, error } = await supabase
         .from('sprints')
-        .insert({ ...payload, created_by: user!.id })
+        .insert({ ...payload, created_by: user.id })
         .select()
         .single()
       if (error) throw error

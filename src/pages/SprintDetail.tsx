@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, Navigate } from 'react-router-dom'
 import { ArrowLeft, Calendar, Target, Edit2, Plus } from 'lucide-react'
 import { useSprint } from '../hooks/useSprints'
 import { useTasks } from '../hooks/useTasks'
@@ -13,8 +13,16 @@ import { TaskForm } from '../components/tasks/TaskForm'
 import { formatDate, getSprintProgress, getSprintStatusColor } from '../lib/utils'
 import { useAuth } from '../contexts/AuthContext'
 
+// UUID v4 pattern — guards against arbitrary strings being used as DB query params
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+
 export function SprintDetail() {
   const { id } = useParams<{ id: string }>()
+
+  // Reject malformed / missing IDs early — prevents injection of arbitrary strings
+  if (!id || !UUID_RE.test(id)) {
+    return <Navigate to="/404" replace />
+  }
   const { user } = useAuth()
   const { data: sprint, isLoading: sprintLoading } = useSprint(id!)
   const { data: tasks = [], isLoading: tasksLoading } = useTasks(id!)

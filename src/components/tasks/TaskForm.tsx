@@ -78,6 +78,7 @@ export function TaskForm({
           placeholder="e.g. Implement login page"
           className="nidus-input"
           required
+          maxLength={200}
         />
       </div>
 
@@ -92,6 +93,7 @@ export function TaskForm({
           placeholder="Optional details…"
           rows={3}
           className="nidus-input resize-none"
+          maxLength={2000}
         />
       </div>
 

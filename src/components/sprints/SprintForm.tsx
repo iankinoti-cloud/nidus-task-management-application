@@ -75,6 +75,7 @@ export function SprintForm({
           placeholder="e.g. Sprint 1 — Auth & Onboarding"
           className="nidus-input"
           required
+          maxLength={200}
         />
       </div>
 
@@ -89,6 +90,7 @@ export function SprintForm({
           placeholder="What do you want to achieve?"
           rows={2}
           className="nidus-input resize-none"
+          maxLength={500}
         />
       </div>
 

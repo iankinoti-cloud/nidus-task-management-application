@@ -13,7 +13,15 @@ export function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <footer className="border-t border-slate-800 py-5 text-center text-xs text-slate-600">
-        Nidus v1.0.0 — Built with ♥ and React
+        <p>Nidus v1.0.0 — Built with ♥ and React</p>
+        <p className="mt-1">
+          Crafted by{' '}
+          <span className="font-semibold tracking-wide text-slate-400 hover:text-indigo-400 transition-colors duration-200 cursor-default">
+            IAN KINOTI
+          </span>{' '}
+          <span className="text-slate-700">✦</span>{' '}
+          <span className="italic text-slate-500">Software Engineer</span>
+        </p>
       </footer>
     </div>
   )

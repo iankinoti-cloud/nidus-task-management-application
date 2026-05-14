@@ -50,9 +50,10 @@ export function useCreateTask() {
 
   return useMutation({
     mutationFn: async (payload: CreateTaskPayload) => {
+      if (!user) throw new Error('You must be signed in to create a task.')
       const { data, error } = await supabase
         .from('tasks')
-        .insert({ ...payload, created_by: user!.id })
+        .insert({ ...payload, created_by: user.id })
         .select('*, assignee:profiles!tasks_assignee_id_fkey(id, email, full_name, avatar_url)')
         .single()
       if (error) throw error

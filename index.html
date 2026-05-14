@@ -5,6 +5,13 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>nidus</title>
+
+    <!--
+      Security headers are served as HTTP response headers via vercel.json,
+      which is the correct and effective place for them (meta-tag CSP cannot
+      enforce frame-ancestors, and meta-tag headers are processed after the
+      browser has already begun parsing, making them less reliable).
+    -->
   </head>
   <body>
     <div id="root"></div>

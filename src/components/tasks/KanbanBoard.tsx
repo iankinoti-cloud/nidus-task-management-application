@@ -19,11 +19,18 @@ interface KanbanBoardProps {
 export function KanbanBoard({ tasks, sprintId }: KanbanBoardProps) {
   const updateStatus = useUpdateTaskStatus()
 
+  // Build an allowlist of valid status values from the canonical TASK_STATUSES array
+  const VALID_STATUSES = new Set(TASK_STATUSES.map((s) => s.value))
+
   function onDragEnd(result: DropResult) {
     const { destination, draggableId } = result
     if (!destination) return
 
     const newStatus = destination.droppableId as TaskStatus
+
+    // Guard: reject any droppableId that isn't a real TaskStatus
+    if (!VALID_STATUSES.has(newStatus)) return
+
     const task = tasks.find((t) => t.id === draggableId)
     if (!task || task.status === newStatus) return
 
